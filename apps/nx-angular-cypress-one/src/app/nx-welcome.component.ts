@@ -30,7 +30,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
       h2,
       p,
       pre {
-        margin: 0;
+        margin: 0
       }
       *,
       ::before,
