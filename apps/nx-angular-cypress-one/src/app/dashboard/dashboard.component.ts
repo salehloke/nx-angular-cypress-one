@@ -13,6 +13,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CommonModule } from '@angular/common';
+import { DashboardService } from '../dashboard-service.service';
 
 @Component({
   // standalone: true,
@@ -37,6 +38,12 @@ import { CommonModule } from '@angular/common';
 export class DashboardComponent {
   isLoading = false;
   private breakpointObserver = inject(BreakpointObserver);
+
+  constructor(
+    private dashboardService: DashboardService
+  ){
+
+  }
 
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(

@@ -20,12 +20,18 @@ import { MatListModule } from '@angular/material/list';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { SidenavListComponent } from './dashboard/sidenav-list/sidenav-list.component';
+import { TopbarComponent } from './dashboard/topbar/topbar.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatTabsModule } from '@angular/material/tabs';
 @NgModule({
   declarations: [
     AppComponent,
     NxWelcomeComponent,
     DashboardComponent,
     ContactFormComponent,
+    SidenavListComponent,
+    TopbarComponent,
   ],
   imports: [
     ReactiveFormsModule,
@@ -44,6 +50,9 @@ import { MatInputModule } from '@angular/material/input';
     MatSidenavModule,
     MatListModule,
     MatProgressSpinnerModule,
+
+    MatBadgeModule,
+    MatTabsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

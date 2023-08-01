@@ -17,14 +17,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TopbarComponent } from './topbar/topbar.component';
+import { SidenavListComponent } from './sidenav-list/sidenav-list.component';
 
-export default {
+const meta: Meta<DashboardComponent> = {
   title: 'Dashboard/DashboardComponent',
   component: DashboardComponent,
+  excludeStories: /.*Data$/,
+  tags: ['autodocs'],
   decorators: [
     moduleMetadata({
-      //👇 Imports both components to allow component composition with Storybook
-      declarations: [DashboardComponent],
+      declarations: [DashboardComponent, TopbarComponent, SidenavListComponent],
       imports: [
         BrowserModule,
         BrowserAnimationsModule,
@@ -46,14 +49,46 @@ export default {
       (story) => `
       <link rel="icon" type="image/x-icon" href="favicon.ico" />
       <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-      <div style="margin: 3em">${story}</div>
+      <div style="margin: 3em">
+     
+      <!-- SIDENAV -->
+<mat-sidenav-container>
+  <mat-sidenav #sidenav opened="true">
+    <!-- SIDENAV LIST -->
+    <nx-angular-cypress-one-sidenav-list
+      (closeSideNav)="sidenav.close()"
+    ></nx-angular-cypress-one-sidenav-list>
+    <!-- end of SIDENAV LIST -->
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- TOOLBAR -->
+    <nx-angular-cypress-one-topbar
+      (openSideNavToggle)="sidenav.toggle()"
+    ></nx-angular-cypress-one-topbar>
+    <!-- end of TOOLBAR -->
+    <main>
+    ${story}
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- end of SIDENAV -->
+      </div>
       `
     ),
   ],
-} as Meta<DashboardComponent>;
+  render: (args: DashboardComponent) => ({
+    props: {
+      ...args,
+      // onPinTask: actionsData.onPinTask,
+      // onArchiveTask: actionsData.onArchiveTask,
+    },
+  }),
+};
+export default meta;
 
 export const Primary = {
   render: (args: DashboardComponent) => ({

@@ -1,2 +1,24 @@
+<!-- SIDENAV -->
+<mat-sidenav-container>
+  <mat-sidenav #sidenav opened="true">
+    <!-- SIDENAV LIST -->
+    <nx-angular-cypress-one-sidenav-list
+      (closeSideNav)="sidenav.close()"
+    ></nx-angular-cypress-one-sidenav-list>
+    <!-- end of SIDENAV LIST -->
+  </mat-sidenav>
 
-<router-outlet></router-outlet>
+  <mat-sidenav-content>
+    <!-- TOOLBAR -->
+    <nx-angular-cypress-one-topbar
+      (openSideNavToggle)="sidenav.toggle()"
+    ></nx-angular-cypress-one-topbar>
+    <!-- end of TOOLBAR -->
+    <main>
+      <router-outlet></router-outlet>
+    </main>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+<!-- end of SIDENAV -->
+
+<!-- <router-outlet></router-outlet> -->
