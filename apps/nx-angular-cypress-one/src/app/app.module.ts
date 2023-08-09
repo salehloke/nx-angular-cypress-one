@@ -37,7 +37,10 @@ import { MatTabsModule } from '@angular/material/tabs';
     ReactiveFormsModule,
     MatInputModule,
     BrowserModule,
-    RouterModule.forRoot(appRoutes, { initialNavigation: 'enabledBlocking' }),
+    RouterModule.forRoot(appRoutes, {
+      initialNavigation: 'enabledBlocking',
+      useHash: true,
+    }),
     BrowserAnimationsModule,
     NgbModule,
     MatGridListModule,
