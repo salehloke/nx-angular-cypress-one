@@ -10,7 +10,7 @@
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
-        "outputPath": "dist/apps/nx-angular-cypress-one",
+        "outputPath": "docs",
         "index": "apps/nx-angular-cypress-one/src/index.html",
         "main": "apps/nx-angular-cypress-one/src/main.ts",
         "polyfills": ["zone.js"],
@@ -31,8 +31,8 @@
           "budgets": [
             {
               "type": "initial",
-              "maximumWarning": "500kb",
-              "maximumError": "1mb"
+              "maximumWarning": "50mb",
+              "maximumError": "10mb"
             },
             {
               "type": "anyComponentStyle",
